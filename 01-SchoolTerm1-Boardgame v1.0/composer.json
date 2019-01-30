@@ -1,0 +1,17 @@
+{
+    "name": "ered0c/wf-oopphp",
+    "authors": [
+        {
+            "name": "VeggieCoder",
+            "email": "akash.soedamah@gmail.com"
+        }
+    ],
+    "autoload": {
+        "classmap": [
+            "./"
+        ]
+    },
+    "require": {
+        "ircmaxell/password-compat": "^1.0"
+    }
+}

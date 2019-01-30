@@ -1,0 +1,10 @@
+Unfortunately I did have some bugs in the files locally:
+winnergot.view.php (tried some stuff with isset in the winnergot file to fix the bug)
+winnerwow.view.php 
+winnerlotr.view.php
+
+After the _GET post from gamewow.view.php only the $score[#] and $player[#] that are  set are getting stored. 
+
+The players that are not stored are undefined. Therefore the script stops running and the redirect method (header("Location: games")) wont work. 
+
+See the spaghetti code @ winnergot.view.php
