@@ -1,0 +1,60 @@
+{% extends "base/base.twig" %}
+
+
+{% block body %}
+        <body class="loginBackground">
+
+        <body id="LoginForm">
+        <div class="container mt-5">
+            <div class="login-form">
+                <div class="main-div">
+                    <br/>
+                    {% if success %}
+                    <h1> {{ success }}</h1>
+                    {% elseif error %}
+                    <h1> {{ error }}</h1>
+                    {% else %}
+                    <center> <h2>Match toevoegen</h2></center>
+                    <br/>
+                    {% endif %}
+
+                    <form action="./matchtoevoegen" method="POST">
+                        <div class="form-group row">
+                            <label for="datetime" class="col-2 col-form-label">Datum en tijd</label>
+                            <div class="col-10">
+                                <input class="form-control" name="date" type="datetime-local" value="{{ "now"|date("Y-m-d") }}T13:45:00" id="datetime">
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="form-group">
+                            <label for="type">Type</label>
+                            <select class="form-control" id="type" name="type">
+                                <option value=0>Wedstrijd</option>
+                                <option value=1>Toernooi</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="club">Team die thuis speelt</label>
+                            <select class="form-control" id="club" name="teamhome">
+                                {% for team in teams %}
+                                    <option value={{ team.id }}>{{ team.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="club">Team die uit speelt</label>
+                            <select class="form-control" id="club" name="teamaway">
+                                {% for team in teams %}
+                                    <option value={{ team.id }}>{{ team.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="beschrijving">Beschrijving</label>
+                            <textarea class="form-control" name="beschrijving" id="beschrijving" rows="3"></textarea>
+                        </div>
+                        <button type="submit" name="login" class="btn btn-success mr-2">Voeg toe</button>
+                    </form>
+                </div>
+            </div></div>
+{% endblock %}

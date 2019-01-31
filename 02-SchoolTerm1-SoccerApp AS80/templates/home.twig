@@ -1,0 +1,21 @@
+{% extends "base/base.twig" %}
+
+
+{% block body %}
+
+    <div class="jumbotron">
+
+        <h1>AS80 Manager</h1>
+        <p>Wij staan voor sportiviteit, samenwerking, wilskracht en zijn krachtig. Dit is de manager app van AS80!</p>
+    {% if user_role('Ouder') %}
+        <a href="beschikbaarstellen"><button  class="btn btn-primary" >Carpool planning</button></a>
+    {% endif %}
+        {% if user_role('Player') %}
+            <a href="ride"><button  class="btn btn-primary" >Carpool planning</button></a>
+
+        {% endif %}
+        </div>
+
+    <h1 class="text-center">Meest recente blog artikelen</h1>
+    {% include "base/blog-feature.twig" %}
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "base/base.twig" %}
+
+
+{% block body %}
+        <body class="loginBackground">
+
+
+        <body id="LoginForm">
+        <div class="container mt-5">
+            <div class="login-form">
+                <div class="main-div">
+                    <br/>
+                    {% if success %}
+                    <h1> {{ success }}</h1>
+                    {% elseif error %}
+                    <h1> {{ error }}</h1>
+                    {% else %}
+                    <center> <h2>Aanmelden voor carpooling</h2></center>
+                    <br/>
+                    {% endif %}
+                    {% if availables %}
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                                <th>Ouder naam</th>
+                                <th>Datum</th>
+                                <th>Home team</th>
+                                <th>Away team</th>
+                                <th>Aanmelden</th>
+                            </tr>
+                            </thead>
+                            <tbody id="users">
+                            {% for available in availables %}
+                                <tr>
+                                    <td>{{ available.first_name }} {{ available.last_name }}</td>
+                                    <td>{{ available.date }}</td>
+                                    <td>{{ available.hometeam }}</td>
+                                    <td>{{ available.awayteam }}</td>
+                                    <td>
+                                        <a href="./ride/{{ available.parent_id }}/{{ available.match_id }}">
+                                            <button type="button" class="btn btn-success mr-2">Aanmelden</button>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    {% endif %}
+                </div>
+            </div></div>
+                </div>
+            </div></div>
+{% endblock %}

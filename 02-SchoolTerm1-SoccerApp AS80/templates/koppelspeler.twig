@@ -1,0 +1,83 @@
+{% extends "base/base.twig" %}
+
+
+{% block body %}
+        <body>
+
+
+        <body id="LoginForm">
+        <div class="container mt-5">
+            <div class="login-form">
+                <div class="main-div">
+                    <br/>
+                    {% if success %}
+                    <h1> {{ success }}</h1>
+                    {% elseif error %}
+                    <h1> {{ error }}</h1>
+                    {% else %}
+                    <center> <h2>Speler koppelen aan een team</h2></center>
+                    <br/>
+                    {% endif %}
+
+                    <form action="./koppelspeler" method="POST">
+                        <div class="form-group">
+                            <label for="club">Kies een team:</label>
+                            <select class="form-control" id="club" name="team">
+                                {% for team in teams %}
+                                    <option value={{ team.id }}>{{ team.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    <br>
+                    <br/>
+                    <input class="form-control" id="input" type="text" placeholder="Zoek een gebruiker..">
+                    <br>
+                    {% if users %}
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                                <th>Selecteer</th>
+                                <th>Firstname</th>
+                                <th>Lastname</th>
+                                <th>Email</th>
+                                <th>Rol</th>
+                            </tr>
+                            </thead>
+                            <tbody id="users">
+                            {% for user in users %}
+                                <tr>
+                                    <td>
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" name="user[]" value="{{ user.user_id }}"></label>
+                                        </div>
+                                    </td>
+                                    <td>{{ user.first_name }}</td>
+                                    <td>{{ user.last_name }}</td>
+                                    <td>{{ user.email }}</td>
+                                    {% if user.name %}
+                                        <td>{{ user.name }}</td>
+                                    {% else %}
+                                        <td>-</td>
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        {% endif %}
+                        <div>
+                            <button type="submit" name="login" class="btn btn-success mr-2">Voeg toe</button>
+                        </div>
+                    </form>
+                </div>
+                <script>
+                    $(document).ready(function(){
+                        $("#input").on("keyup", function() {
+                            var value = $(this).val().toLowerCase();
+                            $("#users tr").filter(function() {
+                                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                            });
+                        });
+                    });
+                </script>
+            </div></div>
+{% endblock %}

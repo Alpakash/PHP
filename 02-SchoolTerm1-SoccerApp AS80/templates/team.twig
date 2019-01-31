@@ -1,0 +1,68 @@
+{% extends "base/base.twig" %}
+
+
+{% block body %}
+        <body class="loginBackground">
+
+        <body id="LoginForm">
+        <div class="container mt-5">
+            <div class="login-form">
+                <div class="main-div">
+                    <br/>
+                    <center> <h2>Team overzicht</h2></center>
+                    <br/>
+                    <form action="./team" method="POST">
+                        <label for="inputName">Team naam:</label>
+                        <div class="form-group">
+                            <input type="text" name="name" class="form-control" id="inputName" placeholder="Naam">
+                        </div>
+                        <div class="form-group">
+                            <label for="club">Kies een club:</label>
+                            <select class="form-control" id="club" name="club">
+                                {% for club in clubs %}
+                                    <option value={{ club.club_id }}>{{ club.club_name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="trainer">Kies een trainer:</label>
+                            <select class="form-control" id="trainer" name="trainer">
+                                {% for trainer in trainers %}
+                                    <option value={{ trainer.user_id }}>{{ trainer.first_name }} {{ trainer.last_name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div>
+                            <button type="submit" name="login" class="btn btn-success mr-2">Voeg toe</button>
+                        </div>
+                    </form>
+                    <br>
+                    {% if teams %}
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th>Naam</th>
+                            <th>Club</th>
+                            <th>Trainer</th>
+                            <th>Opties</th>
+                        </tr>
+                        </thead>
+                        <tbody id="users">
+                        {% for team in teams %}
+                            <tr>
+                            <td>{{ team.name }}</td>
+                            <td>{{ team.club_name }}</td>
+                            <td>{{ team.first_name }} {{ team.last_name }}</td>
+                                <td>
+                                    <a href="./verwijderteam/{{ team.id }}">
+                                    <button type="button" name="login" class="btn btn-danger mr-2" disabled="disabled">Verwijder</button>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    {% endif %}
+                </div>
+            </div></div>
+{% endblock %}

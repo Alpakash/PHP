@@ -1,0 +1,61 @@
+{% extends "base/base.twig" %}
+
+
+{% block body %}
+        <body class="loginBackground">
+
+
+        <body id="LoginForm">
+        <div class="container mt-5">
+            <div class="login-form">
+                <div class="main-div">
+                    <div class="panel">
+                        <center> <h2>Voeg een club toe</h2></center>
+                        {% if successMessage %}
+                            <h6> {{ successMessage }}</h6>
+                        {% endif %}
+                        <br>
+                    </div>
+
+                    <form action="./club" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="name" class="form-control" id="inputName" placeholder="Naam">
+                        </div>
+                        <div class="form-group">
+                            <label for="city">Kies een stad</label>
+                            <select class="form-control" id="city" name="city">
+                                {% for city in cities %}
+                                <option value={{ city.id }}>{{ city.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div>
+                            <button type="submit" name="login" class="btn btn-success mr-2">Voeg toe</button>
+                        </div>
+                    </form>
+                    <br/>
+                    <center> <h2>Overzicht clubs</h2></center>
+                    <br/>
+                    {% if clubs %}
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Nummer</th>
+                            <th>Naam</th>
+                            <th>Stad</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for club in clubs %}
+                        <tr>
+                            <td>{{ club.club_id }}</td>
+                            <td>{{ club.club_name }}</td>
+                            <td>{{ club.city_name }}</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    {% endif %}
+                </div>
+            </div></div>
+{% endblock %}

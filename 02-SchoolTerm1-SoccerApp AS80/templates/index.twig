@@ -1,0 +1,39 @@
+{% extends "base/base.twig" %}
+
+{% block body %}
+
+    <div class="jumbotron">
+        <h1>AS80 Manager</h1>
+        <p>Wij staan voor sportiviteit, samenwerking, wilskracht en zijn krachtig. Dit is de manager app van AS80!</p>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+            Uitleg over AS80 Manager
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Uitleg</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        Welkom op de AS80 Manager, deze app wordt gebruikt door v.v. AS'80. <br><br> <strong>De mogelijkheden met deze app zijn:</strong>
+                        <ol>
+                            <li>Carpool Planning</li>
+                            <li>Algemene berichten plaatsen</li>
+                            <li>Foto's plaatsen van de teams</li>
+                        </ol>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

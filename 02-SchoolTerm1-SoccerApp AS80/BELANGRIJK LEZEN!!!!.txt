@@ -1,0 +1,23 @@
+http://167.99.208.14/AS80/
+
+Er kan ingelogd worden met de volgende rollen:
+- Admin
+- Trainer
+- Ouder
+- Player
+
+Admin account:
+admin@admin.nl
+lol123
+
+Trainer account:
+trainer@trainer.nl
+lol123
+
+Ouder account:
+ouder@ouder.nl
+lol123
+
+Player account:
+player@player.nl
+lol123

@@ -1,0 +1,22 @@
+{% extends "base/base.twig" %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1>Profiel bewerken</h1>
+        <form class="mt-4" action="../public/index.php" method="GET">
+            {% for user in users %}
+            <div class="form-group"> <label for="">Voornaam:</label>
+                <input type="text" class="form-control" name="fname" value="{{ user.first_name }}" readonly>
+            </div>
+
+            <div class="form-group"><label for="">Achternaam:</label>
+                <input type="text" class="form-control" name="lname" value="{{ user.last_name }}" readonly>
+            </div>
+            <div class="form-group"><label for="">Email:</label>
+                <input type="text" class="form-control" name="lname" value="{{ user.email }}" >
+            </div>
+            {% endfor %}
+            <input type="submit" class="btn btn-outline-success" value="Bewerken" disabled="disabled">
+        </form>
+    </div>
+{% endblock %}

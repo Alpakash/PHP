@@ -1,0 +1,199 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+        {% if user_role('Admin') %}
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="fotos">Foto's</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="blog">Blog</a>
+            </li>
+        </ul>
+        <span class="navbar-text mr-3">
+      <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fas fa-user"></i>
+      {{ user.first_name }} {{ user.last_name }}
+  </button>
+
+  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item  mt-2 mb-2" href="edit"><i class="fas fa-address-card"></i> Profiel bewerken</a>
+    {#<a class="dropdown-item  mt-2 mb-2" href="planning"><i class="fas fa-car"></i> Carpoolen</a>#}
+    {#<a class="dropdown-item mb-2" href="uploaden"><i class="fas fa-camera"></i> Foto's uploaden</a>#}
+
+    <a class="dropdown-item mb-2" href="city"><i class="fas fa-city"></i> Stad toevoegen</a>
+    <a class="dropdown-item mb-2" href="club"><i class="fas fa-futbol"></i> Club toevoegen</a>
+    <a class="dropdown-item mb-2" href="users"><i class="fas fa-users"></i> Spelers overzicht</a>
+    <a class="dropdown-item mb-2" href="koppelspeler"><i class="fas fa-child"></i> Koppelen speler aan team</a>
+      <a class="dropdown-item mb-2" href="koppel"><i class="fab fa-connectdevelop"></i> Koppelen ouder aan speler</a>
+    <a class="dropdown-item mb-2" href="match"><i class="far fa-plus-square"></i> Wedstrijden toevoegen</a>
+          <a class="dropdown-item mb-2" href="team"><i class="fas fa-clipboard-list"></i> Team overzicht</a>
+    <a class="dropdown-item mb-2" href="uitloggen"><i class="fas fa-power-off"></i> Uitloggen</a>
+</nav>
+
+        {% elseif user_role('Ouder') %}
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="fotos">Foto's</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="blog">Blog</a>
+            </li>
+        </ul>
+        <span class="navbar-text mr-3">
+      <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fas fa-user"></i>
+          {{ user.first_name }} {{ user.last_name }}
+  </button>
+
+  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item  mt-2 mb-2" href="edit"><i class="fas fa-address-card"></i> Profiel bewerken</a>
+    <a class="dropdown-item  mt-2 mb-2" href="beschikbaarstellen"><i class="fas fa-car"></i> Carpoolen</a>
+    <a class="dropdown-item mb-2" href="maxpassengers"><i class="fas fa-car"></i> Aantal zitplaatsen</a>
+    <a class="dropdown-item mb-2" href="uploaden"><i class="fas fa-camera"></i> Foto's uploaden</a>
+    <a class="dropdown-item mb-2" href="uitloggen"><i class="fas fa-power-off"></i> Uitloggen</a>
+</nav>
+
+      {% elseif user_role('Trainer') %}
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="fotos">Foto's</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="blog">Blog</a>
+            </li>
+        </ul>
+        <span class="navbar-text mr-3">
+      <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fas fa-user"></i>
+      {{ user.first_name }} {{ user.last_name }}
+  </button>
+
+  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item  mt-2 mb-2" href="edit"><i class="fas fa-address-card"></i> Profiel bewerken</a>
+    <a class="dropdown-item  mt-2 mb-2" href="users"><i class="fas fa-users"></i>  Spelers overzicht</a>
+    <a class="dropdown-item  mt-2 mb-2" href="match"><i class="far fa-plus-square"></i> Wedstrijd toevoegen</a>
+    <a class="dropdown-item  mt-2 mb-2" href="matchresult"><i class="fas fa-clipboard-list"></i> Wedstrijd standen invoeren</a>
+    {#<a class="dropdown-item mb-2" href="koppelspeler"><i class="fas fa-car"></i> Spelers koppelen (optioneel)</a>#}
+      {#<a class="dropdown-item mb-2" href="uploaden"><i class="fas fa-camera"></i> Foto's uploaden</a>#}
+      <a class="dropdown-item mb-2" href="uitloggen"><i class="fas fa-power-off"></i> Uitloggen</a>
+
+</nav>
+
+
+
+
+      {% elseif user_role('Player') %}
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="fotos">Foto's</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="blog">Blog</a>
+            </li>
+        </ul>
+        <span class="navbar-text mr-3">
+      <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fas fa-user"></i>
+      {{ user.first_name }} {{ user.last_name }}
+  </button>
+
+  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item  mt-2 mb-2" href="edit"><i class="fas fa-address-card"></i> Profiel bewerken</a>
+    <a class="dropdown-item  mt-2 mb-2" href="ride"><i class="fas fa-car"></i> Carpoolen</a>
+    <a class="dropdown-item mb-2" href="uitloggen"><i class="fas fa-power-off"></i> Uitloggen</a>
+</nav>
+        {% elseif not is_logged_in() %}
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <!-- Button trigger modal -->
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="modal" data-target="#overOns">Over ons</a>
+            </li>
+
+
+            <!-- Modal -->
+        <div class="modal fade" id="overOns" tabindex="-1" role="dialog" aria-labelledby="overOnsTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Samen de sterkste!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+Onze ruim 1.200 leden variëren niet alleen in leeftijd, maar zeker ook in het niveau dat wordt nagestreefd. <br><br>
+Het ene lid wil graag zo hoog mogelijk voetballen, de ander wil vooral gewoon lekker "een balletje trappen".<br><br>
+We hebben sinds medio seizoen 16/17 besloten stappen vooruit en omhoog te willen zetten. <br><br>
+Hiervoor wordt de organisatie ingericht en de faciliteiten in stelling gebracht, om in 17/18 de eerste resultaten te mogen ervaren.<br><br>
+Wij hebben er zin in!
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </ul>
+            <a href="login"><span style="color: #fff; font-weight:600;" class="btn btn-success navbar-text mr-3">
+            Inloggen
+        </span></a>
+            <span class="navbar-text mr-3"><a href="register">
+            Registreren</a>
+        </span>
+</nav>
+        {% else  %}
+          <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+                <a class="nav-link" href="blog">Blog</a>
+            </li>
+        </ul>
+
+        <span class="navbar-text mr-3">
+      <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fas fa-user"></i>
+      {{ user.first_name }} {{ user.last_name }}
+  </button>
+
+  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item  mt-2 mb-2" href="edit"><i class="fas fa-address-card"></i> Profiel bewerken</a>
+    <a class="dropdown-item mb-2" href="uitloggen"><i class="fas fa-power-off"></i> Uitloggen</a>
+</div>
+</nav>
+         <center>
+             <div  class="alert alert-warning mb-0" role="alert">Er is nog geen rol aan dit account gekoppeld door een trainer of admin. U kunt momenteel alleen blog items bekijken.</div>
+</center>
+          {% endif %}
+

@@ -1,0 +1,26 @@
+{
+    "name": "As80",
+    "description": "This is a project for a soccer team, and it is a school project for Windesheim Flevoland",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Desley Roelofsen",
+            "email": "desley-roelofsen@hotmail.nl"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "App/"
+        },
+        "files": [
+            "App/Support/helpers.php"
+        ]
+    },
+    "require": {
+        "symfony/http-foundation": "^4.1",
+        "twig/twig": "^2.0",
+        "vlucas/phpdotenv": "^2.5",
+        "doctrine/dbal": "^2.8",
+        "sendgrid/sendgrid": "^7.2"
+    }
+}

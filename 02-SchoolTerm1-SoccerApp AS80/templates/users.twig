@@ -1,0 +1,109 @@
+{% extends "base/base.twig" %}
+
+
+{% block body %}
+        <body class="loginBackground">
+
+
+        <body id="LoginForm">
+        <div class="container mt-5">
+            <div class="login-form">
+                <div class="main-div">
+                    {#<div class="panel">#}
+                        {#<center> <h2>Voeg een club toe</h2></center>#}
+                        {#{% if successMessage %}#}
+                            {#<h6> {{ successMessage }}</h6>#}
+                        {#{% endif %}#}
+                        {#<br>#}
+                    {#</div>#}
+
+                    {#<form action="./club" method="POST">#}
+                        {#<div class="form-group">#}
+                            {#<input type="text" name="name" class="form-control" id="inputName" placeholder="Naam">#}
+                        {#</div>#}
+                        {#<div class="form-group">#}
+                            {#<label for="city">Kies een stad</label>#}
+                            {#<select class="form-control" id="city" name="city">#}
+                                {#{% for city in cities %}#}
+                                {#<option value={{ city.id }}>{{ city.name }}</option>#}
+                                {#{% endfor %}#}
+                            {#</select>#}
+                        {#</div>#}
+                        {#<div>#}
+                            {#<button type="submit" name="login" class="btn btn-success mr-2">Voeg toe</button>#}
+                        {#</div>#}
+                    {#</form>#}
+                    <br/>
+                    <center> <h2>Alle gebruikers</h2></center>
+                    <br/>
+                    <input class="form-control" id="input" type="text" placeholder="Zoek een gebruiker..">
+                    <br>
+                    {% if users %}
+                    <form action="./roltoekenning" method="POST">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th>Selecteer</th>
+                            <th>Firstname</th>
+                            <th>Lastname</th>
+                            <th>Email</th>
+                            <th>Rol</th>
+                        </tr>
+                        </thead>
+                        <tbody id="users">
+                        {% for user in users %}
+                            <tr>
+                            <td>
+                                {% if user.name %}
+
+                                   <a href="./verwijderrol/{{ user.user_id }}/{{ user.user_role_id }}">
+                                       <button type="button" class="btn btn-danger mr-2"
+                                       {% if user.name == "Admin" or user.user_id == session %}
+                                           disabled="true
+                                       {% endif %}
+                                       ">Verwijder</button>
+                                   </a>
+                                {% else %}
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" name="user[]" value="{{ user.user_id }}"></label>
+                                    </div>
+                                {% endif %}
+                            </td>
+                            <td>{{ user.first_name }}</td>
+                            <td>{{ user.last_name }}</td>
+                            <td>{{ user.email }}</td>
+                            {% if user.name %}
+                                <td>{{ user.name }}</td>
+                            {% else %}
+                                <td>-</td>
+                            {% endif %}
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    {% endif %}
+                    {% if roles %}
+                    <div class="form-group">
+                        <label for="city">Selecteer een rol</label>
+                        <select class="form-control" id="rol" name="rol">
+                            {% for role in roles %}
+                                <option value={{ role.id }}>{{ role.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                        <button type="submit" name="login" class="btn btn-success mr-2">Voeg toe</button>
+                    </form>
+                    {% endif %}
+                </div>
+            </div></div>
+        <script>
+            $(document).ready(function(){
+                $("#input").on("keyup", function() {
+                    var value = $(this).val().toLowerCase();
+                    $("#users tr").filter(function() {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
+        </script>
+{% endblock %}

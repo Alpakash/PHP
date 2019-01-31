@@ -1,0 +1,46 @@
+{% extends "base/base.twig" %}
+
+
+{% block body %}
+ {{ loginLogic }}
+    <div class="loginBackground">
+    <div class="mt-3"></div>
+    <a href="home" class="blackLink"><span class="ml-3"><i class="fas fa-angle-left"></i> <strong>Terug naar site</strong></span></a>
+
+    <body id="LoginForm" class="loginBackground">
+    <div class="container mt-5">
+        <div class="login-form">
+            <div class="main-div">
+                <div class="panel">
+
+                    <center> <h2>Inloggen</h2></center>
+                    <br>
+                </div>
+                {% if error %}
+                    <div class="alert alert-danger mt-3">{{ error }}</div>
+                {%  endif %}
+
+                <form action="" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="email" class="form-control" id="inputEmail" placeholder="Email Address">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password">
+                    </div>
+                    <div>
+                        <button type="submit" name="login" class="btn btn-success mr-2">Inloggen</button>
+
+                        <a href="#" class="blackLink">Wachtwoord vergeten</a>
+                        of
+                        <a href="register" class="blackLink">Registreren</a>
+
+                    </div>
+                </form>
+            </div>
+        </div></div>
+    </div>
+
+
+
+{% endblock body %}

@@ -1,0 +1,37 @@
+{% extends "base/base.twig" %}
+
+
+{% block body %}
+{{ errors }}
+    <body class="loginBackground">
+
+    <body id="LoginForm">
+    <div class="container mt-5">
+        <center>   <div class="login-form">
+            <div class="main-div">
+                <br/>
+                    <h2>Upload your image</h2>
+                    <br/>
+                    <form method = "post" action = "./uploaden" enctype="multipart/form-data">
+                        <input type="hidden" name="size" value="100000000">
+                        <div>
+                            <input type="file" name="image">
+                        </div>
+                        <br>
+                        <div>
+                            <input style="align: center;" type="text" name="text" placeholder="Write a caption..">
+                        </div>
+                        <div>
+                            <button type="submit" name="upload" class="btn btn-success mt-3">Upload</button>
+                        </div>
+                        <div>
+                        </div>
+                    </form>
+
+                    <br/>
+
+            </div>
+        </div></div>
+    </div>
+    </div></div></center>
+    {% endblock %}

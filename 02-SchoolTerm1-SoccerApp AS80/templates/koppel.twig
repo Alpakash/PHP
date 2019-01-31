@@ -1,0 +1,131 @@
+{% extends "base/base.twig" %}
+
+
+{% block body %}
+        <body class="loginBackground">
+
+
+        <body id="LoginForm">
+        <div class="container mt-5">
+            <div class="login-form">
+                <div class="main-div">
+                    {#<div class="panel">#}
+                        {#<center> <h2>Voeg een club toe</h2></center>#}
+                        {#{% if successMessage %}#}
+                            {#<h6> {{ successMessage }}</h6>#}
+                        {#{% endif %}#}
+                        {#<br>#}
+                    {#</div>#}
+
+                    {#<form action="./club" method="POST">#}
+                        {#<div class="form-group">#}
+                            {#<input type="text" name="name" class="form-control" id="inputName" placeholder="Naam">#}
+                        {#</div>#}
+                        {#<div class="form-group">#}
+                            {#<label for="city">Kies een stad</label>#}
+                            {#<select class="form-control" id="city" name="city">#}
+                                {#{% for city in cities %}#}
+                                {#<option value={{ city.id }}>{{ city.name }}</option>#}
+                                {#{% endfor %}#}
+                            {#</select>#}
+                        {#</div>#}
+                        {#<div>#}
+                            {#<button type="submit" name="login" class="btn btn-success mr-2">Voeg toe</button>#}
+                        {#</div>#}
+                    {#</form>#}
+                    <br/>
+                    {% if success %}
+                        <h1> {{ success }}</h1>
+                    {% elseif error %}
+                        <h1> {{ error }}</h1>
+                    {% else %}
+                        <center> <h2>Koppel een ouder aan een player</h2></center>
+                        <br/>
+                        <input class="form-control" id="input" type="text" placeholder="Zoek een gebruiker..">
+                        <br>
+                    {% endif %}
+
+                    {% if ouders %}
+                    <form action="./koppel" method="POST">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th>Selecteer</th>
+                            <th>Firstname</th>
+                            <th>Lastname</th>
+                            <th>Email</th>
+                            <th>Rol</th>
+                        </tr>
+                        </thead>
+                        <tbody id="users">
+                        {% for ouder in ouders %}
+                            <tr>
+                            <td>
+                                {% if ouder.name %}
+                                    <div class="radio">
+                                        <label><input type="radio" name="ouder" value="{{ ouder.user_id }}"></label>
+                                    </div>
+                                {% endif %}
+                            </td>
+                            <td>{{ ouder.first_name }}</td>
+                            <td>{{ ouder.last_name }}</td>
+                            <td>{{ ouder.email }}</td>
+                            {% if ouder.name %}
+                                <td>{{ ouder.name }}</td>
+                            {% else %}
+                                <td>-</td>
+                            {% endif %}
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                                <th>Selecteer</th>
+                                <th>Firstname</th>
+                                <th>Lastname</th>
+                                <th>Email</th>
+                                <th>Rol</th>
+                            </tr>
+                            </thead>
+                            <tbody id="users">
+                            {% for player in players %}
+                                <tr>
+                                    <td>
+                                        {% if player.name %}
+                                            <div class="checkbox">
+                                                <label><input type="checkbox" name="players[]" value="{{ player.user_id }}"></label>
+                                            </div>
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ player.first_name }}</td>
+                                    <td>{{ player.last_name }}</td>
+                                    <td>{{ player.email }}</td>
+                                    {% if player.name %}
+                                        <td>{{ player.name }}</td>
+                                    {% else %}
+                                        <td>-</td>
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        <button type="submit" name="login" class="btn btn-success mr-2">Voeg toe</button>
+
+                        {% endif %}
+                    </form>
+                </div>
+            </div></div>
+        <script>
+            $(document).ready(function(){
+                $("#input").on("keyup", function() {
+                    var value = $(this).val().toLowerCase();
+                    $("#users tr").filter(function() {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
+        </script>
+{% endblock %}

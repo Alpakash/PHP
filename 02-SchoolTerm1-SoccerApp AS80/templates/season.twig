@@ -1,0 +1,50 @@
+{% extends "base/base.twig" %}
+
+
+{% block body %}
+        <body class="mt-3 loginBackground">
+
+        <a href="/"><span class="whiteText ml-3"><i class="fas fa-angle-left"></i> <strong>Terug naar site</strong></span></a>
+
+        <body id="LoginForm">
+        <div class="container mt-5">
+            <div class="login-form">
+                <div class="main-div">
+                    <div class="panel">
+                        <center> <h2>Voeg een stad toe</h2></center>
+                        {% if successMessage %}
+                            <h6> {{ successMessage }}</h6>
+                        {% endif %}
+                        <br>
+                    </div>
+
+                    <form action="./season" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="name" class="form-control" id="inputName" placeholder="Naam">
+                        </div>
+                        <div>
+                            <button type="submit" name="login" class="btn btn-success mr-2">Voeg toe</button>
+                        </div>
+                    </form>
+                    <br/>
+                    {% if cities %}
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Nummer</th>
+                            <th>Naam</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for city in cities %}
+                        <tr>
+                            <td>{{ city.id }}</td>
+                            <td>{{ city.name }}</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    {% endif %}
+                </div>
+            </div></div>
+{% endblock %}

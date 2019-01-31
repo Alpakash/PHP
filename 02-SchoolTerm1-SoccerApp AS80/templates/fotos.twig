@@ -1,0 +1,44 @@
+{% extends "base/base.twig" %}
+
+
+{% block body %}
+
+    <div class="jumbotron page-titles">
+        Foto's van team A1
+    </div>
+
+
+
+    <div class="row">
+        <div class="column">
+{% for image in images %}
+
+   <a href="#foto"><img class="inlineRows" alt="Foto: {{ image.text }}" style="width:100%; float: left;" src="public/uploads/{{ image.image }}" onclick="myFunction(this);"></a>
+
+
+{% endfor %}
+        </div>
+    </div>
+
+    <div class="container">
+    <div class="showText">
+        <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+        <img id="expandedImg" style="width:100%">
+        <div id="imgtext"></div>
+    </div>
+    </div>
+
+
+
+
+    <script>
+        function myFunction(imgs) {
+            var expandImg = document.getElementById("expandedImg");
+            var imgText = document.getElementById("imgtext");
+            expandImg.src = imgs.src;
+            imgText.innerHTML = imgs.alt;
+            expandImg.parentElement.style.display = "block";
+        }
+    </script>
+
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "base/base.twig" %}
+
+
+{% block body %}
+        <body class="loginBackground">
+
+        <body id="LoginForm">
+        <div class="container mt-5">
+            <div class="login-form">
+                <div class="main-div">
+                    <br/>
+                    {% if success %}
+                    <h1> {{ success }}</h1>
+                    {% elseif error %}
+                    <h1> {{ error }}</h1>
+                    {% else %}
+                    <center> <h2>(Auto) beschikbaar stellen voor een match</h2></center>
+                    <br/>
+                    {% endif %}
+                    {% if matches %}
+                    <form action="./beschikbaarstellen" method="POST">
+                        <div class="form-group">
+                            <label for="match">Kies een match</label>
+                            <select class="form-control" id="match" name="match">
+                                {% for match in matches %}
+                                    <option value={{ match.match_id }}>{{ match.hometeam }} - {{ match.awayteam }} - {{ match.date }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        {#<div class="form-group">#}
+                            {#<input type="text" name="home" class="form-control" placeholder="Home team score">#}
+                        {#</div>#}
+                        {#<div class="form-group">#}
+                            {#<input type="text" name="away" class="form-control" placeholder="Away team score">#}
+                        {#</div>#}
+                        <button type="submit" class="btn btn-success mr-2">Beschikbaarheid updaten</button>
+                        </form>
+                        <br/>
+                    <center> <h2>Alle matches</h2></center>
+
+                    <table class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                                <th>Nummer</th>
+                                <th>Home team</th>
+                                <th>Away team</th>
+                                <th>Datum</th>
+                            </tr>
+                            </thead>
+                            <tbody id="users">
+                            {% for match in matches %}
+                                <tr>
+                                    <td>{{ match.match_id }}</td>
+                                    <td>{{ match.hometeam }}</td>
+                                    <td>{{ match.awayteam }}</td>
+                                    <td>{{ match.date }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    {% endif %}
+                </div>
+            </div></div>
+                </div>
+            </div></div>
+{% endblock %}
